@@ -1,0 +1,15 @@
+date,venue_id,start_time,end_time,description
+2026-11-18,2,13:29,15:29,Example description of an event.
+2026-06-22,3,13:23,18:44,Example description of an event.
+2026-08-24,5,13:23,16:21,Example description of an event.
+2026-03-21,5,13:24,15:45,Example description of an event.
+2026-03-20,5,13:41,14:50,Example description of an event.
+2026-04-01,5,13:38,17:45,Example description of an event.
+2026-08-13,3,13:34,18:24,Example description of an event.
+2027-01-21,2,13:19,15:44,Example description of an event.
+2026-07-01,5,13:52,17:29,Example description of an event.
+2026-04-24,3,13:32,14:43,Example description of an event.
+2027-01-14,4,13:43,14:22,Example description of an event.
+2026-11-26,1,13:12,14:53,Example description of an event.
+2026-12-05,4,13:46,18:54,Example description of an event.
+2026-05-16,5,13:17,16:31,Example description of an event.
