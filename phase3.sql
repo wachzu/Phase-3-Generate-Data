@@ -155,7 +155,7 @@ SELECT * FROM TeamEvent
 alter table StudentEvent
     add constraint se_fk
     foreign key (StudentID) references Student(StudentID),
-    foreign key (AthleticEventID) references AthleticEvent(AthleticEventID)
+    foreign key (AthleticEventID) references AthleticEvent(EventID)
 
 alter table Team
     add constraint team_fk
@@ -164,7 +164,7 @@ alter table Team
 alter table TeamEvent
     add constraint te_FK
     foreign key (TeamID) references Team(TeamID),
-    foreign key (AthleticEventID) references AthleticEvent(AthleticEventID)
+    foreign key (AthleticEventID) references AthleticEvent(EventID)
 
 alter table AthleticEvent
     add constraint ae_FK
