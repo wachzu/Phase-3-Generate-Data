@@ -1,8 +1,7 @@
 USE INFO_330_ZJA
 
--- Import all the csv files as staging files. 
+-- BTW I imported all the csv files as staging files using VSCode's import flat file function. 
 -- The staging files are nameOfGroup_stg
-
 
 DROP TABLE IF EXISTS Athlete
 CREATE TABLE Athlete (
@@ -147,6 +146,27 @@ SELECT t.team_id, event_id
 FROM team_event_stg t
 
 SELECT * FROM TeamEvent
+
+
+-- Check constrants
+ALTER TABLE Venue ADD CONSTRAINT CHK_Venue_Capacity 
+CHECK (Capacity > 0);
+
+ALTER TABLE Athlete ADD CONSTRAINT CHK_Athlete_Jersey 
+CHECK (JerseyNumber >= 0 AND JerseyNumber <= 99);
+
+ALTER TABLE Student ADD CONSTRAINT CHK_Student_AcademicStanding
+CHECK(AcademicStanding IN ('Freshman', 'Sophomore', 'Junior', 'Senior'))
+
+--Default constraints
+ALTER TABLE Student ADD CONSTRAINT DF_Student_Eligible 
+DEFAULT 1 FOR TicketEligible;
+
+ALTER TABLE Venue ADD CONSTRAINT DF_Venue_Accessible 
+DEFAULT 0 FOR Accessible;
+
+ALTER TABLE Student ADD CONSTRAINT DF_Student_AcademicStanding
+DEFAULT 'Freshman' FOR AcademicStanding
 
 
 
