@@ -97,9 +97,23 @@ for i in range(1,15):
     teams.append(sport_row)
 teams_df = pd.DataFrame(teams)
 
+#Junction table 1 - Team to Event 
+team_event = pd.DataFrame([{
+    'team_id': random.randint(1,14),
+    'event_id': random.randint(1,14)
+} for i in range(1, 15)])
+
+# Junction table 2 - Student to Event
+student_event = pd.DataFrame([{
+    'student_id': random.randint(1,200),
+    'event_id': random.randint(1,14)
+} for i in range(1, 80)])
+
 # Export to CSV
-student_df.to_csv('student_athletes.csv', index=False)
-coaches_df.to_csv('coaches.csv', index=False)
-venues.to_csv('venues.csv', index=False)
-events.to_csv('events.csv', index=False)
-teams_df.to_csv('teams.csv', index=False)
+# student_df.to_csv('student_athletes.csv', index=False)
+# coaches_df.to_csv('coaches.csv', index=False)
+# venues.to_csv('venues.csv', index=False)
+# events.to_csv('events.csv', index=False)
+# teams_df.to_csv('teams.csv', index=False)
+team_event.to_csv('team_event.csv', index=False)
+student_event.to_csv('student_event.csv', index=False)
