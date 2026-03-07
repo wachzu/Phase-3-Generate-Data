@@ -54,6 +54,7 @@ CREATE TABLE Coach (
     CoachName VARCHAR(MAX) NOT NULL,
     CoachRole VARCHAR(50) NOT NULL,
     Sport VARCHAR(50) NOT NULL,
+    Salary INT NOT NULL,
     TeamID INT NOT NULL
 )
 SELECT * FROM Coach
@@ -83,10 +84,6 @@ CREATE TABLE TeamEvent (
 )
 SELECT * FROM TeamEvent
 
-
-
-
-
 -- Insert into Venue
 INSERT INTO Venue (VenueName, VenueAddress, Indoor, Accessible, Capacity)
 SELECT [name], [address], indoor, accessible, capacity
@@ -109,8 +106,8 @@ FROM student_athletes_stg
 SELECT * FROM Student
 
 -- Insert into Coach
-INSERT INTO Coach (CoachName, CoachRole, Sport, TeamID)
-SELECT [name], [role], sport, team_id
+INSERT INTO Coach (CoachName, CoachRole, Sport, Salary, TeamID)
+SELECT [name], [role], sport, salary, team_id
 FROM coaches_stg c JOIN Team t ON c.team_id = t.TeamID
 
 SELECT * FROM Coach
