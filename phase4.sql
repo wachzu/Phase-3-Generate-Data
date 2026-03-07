@@ -21,3 +21,26 @@ ORDER BY dollars_per_seat DESC;
 -- to different sports.
 
 
+-- Query #2 - Team broken down by academic standing
+WITH TeamRoster AS (
+    -- This CTE prepares the data by joining and filtering in one place
+    SELECT 
+        t.sport AS Sport,
+        s.AcademicStanding
+    FROM Athlete a
+    INNER JOIN Student s ON a.StudentID = s.StudentID
+    INNER JOIN Team t ON a.TeamID = t.TeamID
+    WHERE a.AthleteID != -1
+)
+SELECT
+    Sport,
+    COUNT(CASE WHEN AcademicStanding = 'Freshman' THEN 1 END) AS Freshmen,
+    COUNT(CASE WHEN AcademicStanding = 'Sophomore' THEN 1 END) AS Sophomores,
+    COUNT(CASE WHEN AcademicStanding = 'Junior' THEN 1 END) AS Juniors,
+    COUNT(CASE WHEN AcademicStanding = 'Senior' THEN 1 END) AS Seniors,
+    COUNT(*) AS Total_Athletes
+FROM TeamRoster
+GROUP BY Sport
+ORDER BY Total_Athletes DESC;
+
+
