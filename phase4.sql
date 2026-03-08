@@ -22,11 +22,14 @@ ORDER BY dollars_per_seat DESC;
 
 
 -- Query #2 - Team broken down by academic standing
+-- This query shows each team, with how many freshman, sophomore, juniors and Seniors
+-- are on the team.
 WITH TeamRoster AS (
     -- This CTE prepares the data by joining and filtering in one place
     SELECT 
         t.sport AS Sport,
-        s.AcademicStanding
+        s.AcademicStanding,
+        t.Gender AS Gender
     FROM Athlete a
     INNER JOIN Student s ON a.StudentID = s.StudentID
     INNER JOIN Team t ON a.TeamID = t.TeamID
@@ -34,13 +37,17 @@ WITH TeamRoster AS (
 )
 SELECT
     Sport,
+    Gender,
     COUNT(CASE WHEN AcademicStanding = 'Freshman' THEN 1 END) AS Freshmen,
     COUNT(CASE WHEN AcademicStanding = 'Sophomore' THEN 1 END) AS Sophomores,
     COUNT(CASE WHEN AcademicStanding = 'Junior' THEN 1 END) AS Juniors,
     COUNT(CASE WHEN AcademicStanding = 'Senior' THEN 1 END) AS Seniors,
     COUNT(*) AS Total_Athletes
 FROM TeamRoster
-GROUP BY Sport
+GROUP BY Sport, Gender
 ORDER BY Total_Athletes DESC;
+-- After looking at the data, it shows that teams like womens and mens golf have a large proportion of players
+-- who are seniors. It helps teams recognize that teams should focus on younger athletes. Comparatively, 
+-- both the mens and womens soccer teams have 0 freshman, implying they should recruit more younger players.
 
-
+-- Query #3 
